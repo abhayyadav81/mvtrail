@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1081757191081",
+    "project_id": "bharat-taxi-c9ca2",
+    "storage_bucket": "bharat-taxi-c9ca2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081757191081:android:3daa33ca21009b0a1012b8",
+        "android_client_info": {
+          "package_name": "com.bharattaxi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIrMRb2fhXzSUU00kLE9p6DGMJGtuXXHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
