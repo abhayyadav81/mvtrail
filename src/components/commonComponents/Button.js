@@ -15,9 +15,9 @@ function Buttons(props) {
         },
         buttonTextStyle: {
           color:"black",
-          fontFamily: Fonts.Poppins_Medium,
+          fontFamily: Fonts.Poppins_Regular,
           fontSize: SF(19),
-          fontWeight: '600',
+          fontWeight: '700',
           // lineHeight: SH(24),
         },
         buttonViewStyle: {

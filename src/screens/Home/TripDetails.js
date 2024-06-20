@@ -37,7 +37,7 @@ const TripDetails = ({ navigation, route }) => {
       data.push({
         title: (
           <View>
-            <Text style={{ color: 'black', fontFamily: Fonts.Poppins_Regular }}>{activeBookings.source_city}</Text>
+            <Text style={{ color: '#5A5A5A', fontFamily: Fonts.Poppins_Regular }}>{activeBookings.source_city}</Text>
           </View>
         ),
         icon: <Image source={require('../../images/destination.png')} resizeMode="contain" style={styles.icon} />
@@ -56,7 +56,7 @@ const TripDetails = ({ navigation, route }) => {
       data.push({
         title: (
           <View>
-            <Text style={{ color: 'black', fontFamily: Fonts.Poppins_Regular }}>{destination}</Text>
+            <Text style={{ color: '#5A5A5A', fontFamily: Fonts.Poppins_Regular }}>{destination}</Text>
           </View>
         ),
         icon: <Image source={require('../../images/destination.png')} resizeMode="contain" style={styles.icon} />
@@ -124,7 +124,7 @@ const TripDetails = ({ navigation, route }) => {
 
 
             <View>
-              <Text style={{ fontSize: 17, fontWeight: "700", color: 'black', fontFamily: Fonts.Poppins_Regular }}>{route?.params?.data?.car_name}</Text>
+              <Text style={{ fontSize: 17, fontWeight: "800", color: 'black', fontFamily: Fonts.Poppins_Regular }}>{route?.params?.data?.car_name}</Text>
             </View>
 
 
@@ -135,7 +135,7 @@ const TripDetails = ({ navigation, route }) => {
                 {/* <Image source={require('../../images/Vector2.png')} style={{ height: 30, width: 30, resizeMode: 'contain' }} /> */}
               </View>
               <View style={{ marginHorizontal: 10 }}>
-                <Text style={{ color: 'black', fontSize: 15, fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Trip for</Text>
+                <Text style={{ color: '#000000', fontSize: 15, fontWeight: '700',fontFamily: Fonts.Poppins_Bold, }}>Trip for</Text>
                 {/* <Text style={{ color: "gray" }}>{activeBookings?.source_city}</Text> */}
               </View>
 
@@ -143,7 +143,7 @@ const TripDetails = ({ navigation, route }) => {
             </View>
             {
               activeBookings?.destination_city ?
-                <View style={{ height: dynamicHeight, marginLeft: -5, marginTop: 3 }}>
+                <View style={{ height: dynamicHeight, marginLeft: -10, marginTop: 3 }}>
                   <Timeline
                     data={data}
                     circleSize={20}
@@ -160,19 +160,19 @@ const TripDetails = ({ navigation, route }) => {
                 :
                 <View style={{ paddingHorizontal: 30 }}>
 
-                  <Text style={{ color: "gray", bottom: Dimensions.hp(0.5), fontFamily: Fonts.Poppins_Regular }}>{activeBookings?.source_city}</Text>
+                  <Text style={{ color: "#5A5A5A", bottom: Dimensions.hp(0.5), fontFamily: 'Poppins' }}>{activeBookings?.source_city}</Text>
                 </View>
             }
 
             {
               activeBookings?.drop_location ?
-                <View style={{ flexDirection: 'row', marginTop: 5 }}>
-                  <View style={{ marginTop: -5 }}>
+                <View style={{ flexDirection: 'row', marginTop: 5,marginLeft:-5 }}>
+                  <View style={{ marginTop: -10}}>
                     <Image source={require('../../images/connectingarrow.png')} style={{ height: 30, width: 30, resizeMode: 'contain' }} />
                   </View>
-                  <View style={{ marginHorizontal: 10 }}>
+                  <View style={{marginLeft:5 }}>
 
-                    <Text style={{ color: "gray", fontFamily: Fonts.Poppins_Regular }}>{activeBookings?.drop_location}</Text>
+                    <Text style={{ color: "#5A5A5A", fontFamily: Fonts.Poppins_Regular }}>{activeBookings?.drop_location}</Text>
                   </View>
 
 
@@ -191,12 +191,12 @@ const TripDetails = ({ navigation, route }) => {
                 {/* <Image source={require('../../images/Vector.png')} style={{ height: 25, width: 25, resizeMode: 'contain' }} /> */}
               </View>
               <View style={{ marginHorizontal: 10 }}>
-                <Text style={{ color: 'black', fontSize: 15, fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Package name</Text>
+                <Text style={{ color: 'black', fontSize: 15, fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Package name</Text>
                 {
                   activeBookings?.package_name ?
-                    <Text style={{ color: "gray", fontFamily: Fonts.Poppins_Regular }}>{activeBookings?.package_name}</Text>
+                    <Text style={{ color: "#5A5A5A", fontFamily: Fonts.Poppins_Regular }}>{activeBookings?.package_name}</Text>
                     :
-                    <Text style={{ color: "gray", fontFamily: Fonts.Poppins_Regular }}>{route?.params?.data?.package_name}</Text>
+                    <Text style={{ color: "#5A5A5A", fontFamily: Fonts.Poppins_Regular }}>{route?.params?.data?.package_name}</Text>
                 }
 
               </View>
@@ -209,25 +209,25 @@ const TripDetails = ({ navigation, route }) => {
                 {/* <Image source={require('../../images/Vector1.png')} style={{ height: 25, width: 25, resizeMode: 'contain' }} /> */}
               </View>
               <View style={{ marginHorizontal: 10 }}>
-                <Text style={{ color: 'black', fontSize: 15, fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Pick up date & time</Text>
-                <Text style={{ color: "gray", fontFamily: Fonts.Poppins_Regular }}>{activeBookings?.pickup_date}</Text>
+                <Text style={{ color: 'black', fontSize: 15, fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Pick up date & time</Text>
+                <Text style={{ color: "#5A5A5A", fontFamily: Fonts.Poppins_Regular }}>{activeBookings?.pickup_date}</Text>
               </View>
             </View>
 
             {activeBookings?.drop_date &&
               <View style={{ flexDirection: 'row', marginTop: 20 }}>
                 <View>
-                  <Image source={require('../../images/Vector1.png')} style={{ height: 25, width: 25, resizeMode: 'contain' }} />
+                <DatePickerIcon />
                 </View>
                 <View style={{ marginHorizontal: 10 }}>
-                  <Text style={{ color: 'black', fontSize: 15, fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Drop date & time</Text>
+                  <Text style={{ color: 'black', fontSize: 15, fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Drop date & time</Text>
                   <Text style={{ color: "gray", fontFamily: Fonts.Poppins_Regular }}>{activeBookings?.drop_date}</Text>
                 </View>
               </View>}
           </View>
 
           <View style={{ marginTop: 20 }}>
-            <Text style={{ color: 'black', fontSize: 15, fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Fair details</Text>
+            <Text style={{ color: 'black', fontSize: 15, fontWeight: '700',  }}>Fair details</Text>
           </View>
           <View style={{ borderTopWidth: 1, borderColor: 'gray', marginTop: 15 }}>
 
@@ -254,7 +254,7 @@ const TripDetails = ({ navigation, route }) => {
       }}
         onPress={() => navigation.navigate('BillingDetails')}
       >
-        <Text style={{ color: 'white', fontSize: 20, fontWeight: '500', fontFamily: Fonts.Poppins_Regular }}>Next</Text>
+        <Text style={{ color: 'white', fontSize: 18, fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Next</Text>
       </TouchableOpacity>
     </View >
   )

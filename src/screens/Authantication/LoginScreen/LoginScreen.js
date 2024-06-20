@@ -9,15 +9,19 @@ import images from '../../../index';
 import { useTranslation } from "react-i18next";
 import axios from 'axios';
 import { BASE_URL } from '../../../utils/Api';
+import { setDataUser } from '../../../redux/slice';
+import { useDispatch } from 'react-redux';
 
 const LoginScreen = (props) => {
     const { Colors } = useTheme();
     const Logins = useMemo(() => Login(Colors), [Colors]);
+    const dispatch=useDispatch()
     const { navigation } = props;
     const [mobileNumber, setMobileNumber] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [passwordVisibility, setpasswordVisibility] = useState(true);
     const [TextInputPassword, setTextInputPassword] = useState('');
+    console.log('prrrropeeppss',props?.route?.params?.data)
     const onChangeText = (text) => {
         if (text === 'TextInputPassword') setpasswordVisibility(!passwordVisibility);
     };
@@ -50,7 +54,13 @@ const LoginScreen = (props) => {
 
             console.log('response', response.data);
             if(response?.data?.message==="success"){
-                navigation.navigate("OtpVeryfiveScreen",{pass:TextInputPassword,uname:mobileNumber})
+                dispatch(setDataUser(response.data))
+                if(props?.route?.params?.data===1){
+                    navigation.replace('Mpinset')
+                }else{
+                    navigation.replace(RouteName.SIDE_NAVIGATOR)
+                }
+               
             }
             if(response?.data?.message==="fail"){
                 ToastAndroid.show(`${response?.data?.text}`, ToastAndroid.SHORT);

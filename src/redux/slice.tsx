@@ -38,6 +38,7 @@ const authSlice = createSlice({
     dataUser:"",
     bookingDetail:"",
     roadPackage:"",
+    MPincode:"",
     
 
 
@@ -61,6 +62,9 @@ const authSlice = createSlice({
       },
       setHousenumber: (state, action) => {
         state.Housenumber = action.payload;
+      },
+      setMpinCode: (state, action) => {
+        state.MPincode = action.payload;
       },
       setLocalitys: (state, action) => {
         state.Locality = action.payload;
@@ -161,6 +165,7 @@ const authSlice = createSlice({
 export const {
   login,
   setDataUser,
+  setMpinCode,
   setActiveBookings,
   setCompletedBookings,
   setUserContacts,

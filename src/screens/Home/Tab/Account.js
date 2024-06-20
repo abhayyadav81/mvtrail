@@ -142,7 +142,7 @@ const AccountTab = () => {
       </CardLayout>
       <View
         style={style.TransactionView}>
-        <Text style={style.subTitle}>Transaction</Text>
+        <Text style={{fontsize:17,color:'black',fontweight:"700"}}>Transaction</Text>
         <View style={style.horizontalLine}
         />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: Dimensions.wp(4) }}>

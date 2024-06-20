@@ -1065,7 +1065,7 @@ const HomeTab = (props) => {
                 console.log('local search===>>>>>>>>', response?.data);
                 dispatch(setUserData(response?.data?.dataResult))
                 dispatch(setActiveBookings(response?.data?.search_data))
-                navigation.navigate('CarsPriceDetail')
+                navigation.navigate('CarsPriceDetail', {booking: 'rentals'})
 
             } catch (error) {
                 console.error('Error:', error);
@@ -1116,7 +1116,7 @@ const HomeTab = (props) => {
                 console.log('local search===>>>>>>>>', response?.data);
                 dispatch(setUserData(response?.data?.dataResult))
                 dispatch(setActiveBookings(response?.data?.search_data))
-                navigation.navigate('CarsPriceDetail')
+                navigation.navigate('CarsPriceDetail',{booking: 'oneway'})
 
             } catch (error) {
                 console.error('Error:', error);
@@ -1163,7 +1163,7 @@ const HomeTab = (props) => {
                 // console.log('local search===>>>>>>>>', response?.data);
                 dispatch(setUserData(response?.data?.dataResult))
                 dispatch(setActiveBookings(response?.data?.search_data))
-                navigation.navigate('CarsPriceDetail')
+                navigation.navigate('CarsPriceDetail', {booking: 'Round'})
 
             } catch (error) {
                 console.error('Error:', error);
@@ -1208,7 +1208,7 @@ const HomeTab = (props) => {
                 dispatch(setUserData(response?.data?.packages))
                 dispatch(setActiveBookings(response?.data?.search_result))
                 // dispatch(setRoadPackage(response?.data?.package))
-                navigation.navigate('CarsPriceDetail')
+                navigation.navigate('CarsPriceDetail', {booking: 'Road'})
 
             } catch (error) {
                 console.error('Error:', error);
@@ -1253,7 +1253,7 @@ const HomeTab = (props) => {
                 console.log('local search===>>>>>>>>', response?.data);
                 dispatch(setUserData(response?.data?.dataResult))
                 dispatch(setActiveBookings(response?.data?.search_data))
-                navigation.navigate('CarsPriceDetail')
+                navigation.navigate('CarsPriceDetail', {booking: 'local'})
 
             } catch (error) {
                 console.error('Error:', error);
@@ -1343,7 +1343,7 @@ const HomeTab = (props) => {
                                 backgroundColor: '#fff',
                                 color: '#000',
                                 width: SW(240),
-                                borderRadius: 15
+                                borderRadius: 10
                             },
                         }}
                         rightButtonsContainerStyle={{
@@ -1355,7 +1355,7 @@ const HomeTab = (props) => {
                             backgroundColor: '#fff',
                             borderWidth: 1,
                             borderColor: error === true ? 'red' : '#B6B6B6',
-                            borderRadius: 15
+                            borderRadius: 10
                         }}
                         suggestionsListContainerStyle={{
                             backgroundColor: '#fff',
@@ -1549,7 +1549,7 @@ const HomeTab = (props) => {
                                 backgroundColor: '#fff',
                                 color: '#000',
                                 width: SW(240),
-                                borderRadius: 15
+                                borderRadius: 10
                             },
                         }}
                         rightButtonsContainerStyle={{
@@ -1561,7 +1561,7 @@ const HomeTab = (props) => {
                             backgroundColor: '#fff',
                             borderWidth: 1,
                             borderColor: error === true ? 'red' : '#B6B6B6',
-                            borderRadius: 15
+                            borderRadius: 10
                         }}
                         suggestionsListContainerStyle={{
                             backgroundColor: '#fff',
@@ -1612,7 +1612,7 @@ const HomeTab = (props) => {
                                 backgroundColor: '#fff',
                                 color: '#000',
                                 width: SW(240),
-                                borderRadius: 15
+                                borderRadius: 10
                             },
                         }}
                         rightButtonsContainerStyle={{
@@ -1624,7 +1624,7 @@ const HomeTab = (props) => {
                             backgroundColor: '#fff',
                             borderWidth: 1,
                             borderColor: error === true ? 'red' : '#B6B6B6',
-                            borderRadius: 15
+                            borderRadius: 10
                         }}
                         suggestionsListContainerStyle={{
                             backgroundColor: '#fff',
@@ -1726,7 +1726,7 @@ const HomeTab = (props) => {
                                 backgroundColor: '#fff',
                                 color: '#000',
                                 width: SW(240),
-                                borderRadius: 15
+                                borderRadius: 10
                             },
                         }}
                         rightButtonsContainerStyle={{
@@ -1738,7 +1738,7 @@ const HomeTab = (props) => {
                             backgroundColor: '#fff',
                             borderWidth: 1,
                             borderColor: error === true ? 'red' : '#B6B6B6',
-                            borderRadius: 15
+                            borderRadius: 10
                         }}
                         suggestionsListContainerStyle={{
                             backgroundColor: '#fff',
@@ -1774,7 +1774,7 @@ const HomeTab = (props) => {
                         <View key={index}>
                             <View style={{
                                 flexDirection: 'row',
-                                borderWidth: 1, alignItems: "center", paddingHorizontal: 5, paddingVertical: 5, borderRadius: 15, height: 42, marginVertical: 5, borderColor: error === true ? 'red' : '#bbb'
+                                borderWidth: 1, alignItems: "center", paddingHorizontal: 5, paddingVertical: 5, borderRadius: 10, height: 42, marginVertical: 5, borderColor: error === true ? 'red' : '#bbb'
                             }}>
 
                                 {/* <TextInput
@@ -1839,7 +1839,7 @@ const HomeTab = (props) => {
                                         // borderRadius: 25,
                                         // borderWidth: 1,
                                         borderColor: error === true ? 'red' : '#bbb',
-                                        borderRadius: 15
+                                        borderRadius: 10
 
                                     }}
                                     suggestionsListContainerStyle={{
@@ -2021,7 +2021,7 @@ const HomeTab = (props) => {
                                 backgroundColor: '#fff',
                                 color: '#000',
                                 width: SW(240),
-                                borderRadius: 15
+                                borderRadius: 10
                             },
                         }}
                         rightButtonsContainerStyle={{
@@ -2033,7 +2033,7 @@ const HomeTab = (props) => {
                             backgroundColor: '#fff',
                             borderWidth: 1,
                             borderColor: error === true ? 'red' : '#B6B6B6',
-                            borderRadius: 15
+                            borderRadius: 10
                         }}
                         suggestionsListContainerStyle={{
                             backgroundColor: '#fff',
@@ -2224,7 +2224,7 @@ const HomeTab = (props) => {
                                 backgroundColor: '#fff',
                                 color: '#000',
                                 width: SW(240),
-                                borderRadius: 15
+                                borderRadius: 10
                             },
                         }}
                         rightButtonsContainerStyle={{
@@ -2236,7 +2236,7 @@ const HomeTab = (props) => {
                             backgroundColor: '#fff',
                             borderWidth: 1,
                             borderColor: error === true ? 'red' : '#B6B6B6',
-                            borderRadius: 15
+                            borderRadius: 10
                         }}
                         suggestionsListContainerStyle={{
                             backgroundColor: '#fff',
@@ -2309,7 +2309,7 @@ const HomeTab = (props) => {
                                 backgroundColor: '#fff',
                                 color: '#000',
                                 width: SW(240),
-                                borderRadius: 15
+                                borderRadius: 10
                             },
                         }}
                         rightButtonsContainerStyle={{
@@ -2321,7 +2321,7 @@ const HomeTab = (props) => {
                             backgroundColor: '#fff',
                             borderWidth: 1,
                             borderColor: error === true ? 'red' : '#B6B6B6',
-                            borderRadius: 15
+                            borderRadius: 10
                         }}
                         suggestionsListContainerStyle={{
                             backgroundColor: '#fff',

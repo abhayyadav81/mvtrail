@@ -9,7 +9,8 @@ import { setcarDetail } from '../../redux/slice';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RenderHTML from 'react-native-render-html';
 import Dimensions from '../../utils/Dimension';
-import {Fonts} from '../../utils';
+import { Fonts } from '../../utils';
+import { color } from 'react-native-elements/dist/helpers';
 
 const CarsDetail = ({ navigation, route }) => {
     const dispatch = useDispatch()
@@ -22,9 +23,32 @@ const CarsDetail = ({ navigation, route }) => {
     const [packagee, setPackage] = useState(false)
     const [itneray, setItinerary] = useState(false)
     const [int, setInt] = useState(false)
+    const [htmlContent, setHtmlContent] = useState('');
+    const [htmlContent1, setHtmlContent1] = useState('');
+    const[packsum,setpacksum]=useState('')
+    const[iti,setIti]=useState('')
     useEffect(() => {
         dispatch(setcarDetail(route?.params?.data))
+      if(route?.params?.data?.inclusion) { let content = route?.params?.data?.inclusion
+        content = content.replace(/<p>/g, '<p style="color: gray;">');
+        setHtmlContent(content);}
+
+        if(route?.params?.data?.exclution){let content1 = route?.params?.data?.exclution
+        content1 = content1.replace(/<p>/g, '<p style="color: gray;">');
+        setHtmlContent1(content1);}
+
+        if(route?.params?.data?.package_summary){let content2 =  route?.params?.data?.package_summary
+        content2 = content2.replace(/<p>/g, '<p style="color: gray;">');
+        setpacksum(content2);}
+
+        if(route?.params?.data?.itenary){let content3 =  route?.params?.data?.itenary
+        content3 = content3.replace(/<div class="panel-heading">/g, '<div class="panel-heading" style="color: blue;">');
+        content3 = content3.replace(/<h4 class="panel-title">/g, '<h4 class="panel-title" style="color: green;">');
+        content3 = content3.replace(/<strong>/g, '<strong style="color: red;">');
+        setIti(content3);}
+       
     }, [])
+   console.log('route?.params?.data?.itenary',route?.params?.data?.itenary)
 
     function totalprice(price) {
         const numericPrice = parseFloat(price);
@@ -102,22 +126,30 @@ const CarsDetail = ({ navigation, route }) => {
 
 
                             <View style={{ flexGrow: 1, marginLeft: 10, width: '56%' }}>
-                                <Text style={{ fontSize: 17, fontWeight: "700", color: 'black' ,fontFamily:Fonts.Poppins_Regular}}>{route?.params?.data?.car_name}</Text>
+                                <Text style={{ fontSize: 17, fontWeight: "700", color: 'black', fontFamily: Fonts.Poppins_Regular }}>{route?.params?.data?.car_name}</Text>
                                 <View style={{
                                     borderWidth: 1, width: '30%', justifyContent: 'center',
                                     alignItems: 'center', borderRadius: 5, marginTop: 5, borderColor: 'gray'
                                 }}>
-                                    <Text style={{ color: 'gray', fontSize: 12 ,fontFamily:Fonts.Poppins_Regular}}>{route?.params?.data?.class_name}</Text>
+                                    <Text style={{ color: 'gray', fontSize: 12, fontFamily: Fonts.Poppins_Regular }}>{route?.params?.data?.class_name}</Text>
                                 </View>
 
                                 <View style={{ borderRadius: 5, marginTop: 5, flexDirection: 'row' }}>
-                                    <Text style={{ color: 'black', fontSize: 12,fontFamily:Fonts.Poppins_Regular }}>Package</Text>
+                                    <Text style={{ color: 'black', fontSize: 12, fontFamily: Fonts.Poppins_Regular }}>Package</Text>
                                     <View style={{ width: '80%' }}>
-                                        <Text style={{ marginLeft: 10, color: 'gray', fontSize: 12,fontFamily:Fonts.Poppins_Regular }}>{route?.params?.data?.package_name}</Text>
+                                        <Text style={{ marginLeft: 10, color: 'gray', fontSize: 12, fontFamily: Fonts.Poppins_Regular }}>{route?.params?.data?.package_name}</Text>
                                     </View>
 
 
                                 </View>
+                    {       route?.params?.data?.minimum_km&&     <View style={{ borderRadius: 5, marginTop: 5, flexDirection: 'row' }}>
+                                    <Text style={{ color: 'black', fontSize: 12, fontFamily: Fonts.Poppins_Regular }}>Charged distance</Text>
+                                    <View style={{ width: '80%' }}>
+                                        <Text style={{ marginLeft: 10, color: 'gray', fontSize: 12, fontFamily: Fonts.Poppins_Regular }}>{route?.params?.data?.minimum_km} km</Text>
+                                    </View>
+
+
+                                </View>}
 
                             </View>
                             <View style={{ alignItems: "flex-end", }}>
@@ -127,23 +159,23 @@ const CarsDetail = ({ navigation, route }) => {
                                         width: 20, borderRadius: 10,
                                         justifyContent: "center", alignItems: 'center', backgroundColor: '#FFA807', height: 20
                                     }}>
-                                        <Text style={{ color: 'white' ,fontFamily:Fonts.Poppins_Regular }}>i</Text>
+                                        <Text style={{ color: 'white', fontFamily: Fonts.Poppins_Regular }}>i</Text>
                                     </TouchableOpacity>
-                                    <View style={{marginLeft:5}}>
-                                    {
-                                        route?.params?.data?.total_price ?
-                                            <Text style={{ color: 'black', fontWeight: '700',fontFamily:Fonts.Poppins_Regular }}>
-                                                ₹ {route?.params?.data?.total_price}</Text>
-                                            :
-                                            <Text style={{ color: 'black', fontWeight: '700',fontFamily:Fonts.Poppins_Regular }}>
-                                                ₹ {route?.params?.data?.car_price}</Text>
-                                    }
+                                    <View style={{ marginLeft: 5 }}>
+                                        {
+                                            route?.params?.data?.total_price ?
+                                                <Text style={{ color: 'black', fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>
+                                                    ₹ {route?.params?.data?.total_price}</Text>
+                                                :
+                                                <Text style={{ color: 'black', fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>
+                                                    ₹ {route?.params?.data?.car_price}</Text>
+                                        }
                                     </View>
 
                                 </View>
 
                                 <View style={{ marginTop: 6 }}>
-                                    <Text style={{ fontSize: 12, color: 'gray' ,fontFamily:Fonts.Poppins_Regular}}>Inc. GST &DA</Text>
+                                    <Text style={{ fontSize: 12, color: 'gray', fontFamily: Fonts.Poppins_Regular }}>Inc. GST &DA</Text>
                                 </View>
 
 
@@ -162,7 +194,7 @@ const CarsDetail = ({ navigation, route }) => {
                                 }}
                                 onPress={() => { setTextVisibility(!isTextVisible); setExtra(false); setExcluion(false); setTerm(false) }}
                             >
-                                <Text style={{ color: "black", fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Fare breakup</Text>
+                                <Text style={{ color: "black", fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Fare breakup</Text>
                                 {
                                     isTextVisible === true ?
                                         <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
@@ -180,25 +212,25 @@ const CarsDetail = ({ navigation, route }) => {
                             isTextVisible === true ?
                                 <>
                                     <View style={{ flexDirection: 'row', padding: 15, marginHorizontal: 10 }}>
-                                        <Text style={{ color: 'gray', fontWeight: '600' ,width:'50%',fontFamily:Fonts.Poppins_Regular}}>Base Fare</Text>
-                                        <View style={{ flexGrow: 1,  }}>
-                                            <Text style={{ color: 'gray', fontWeight: '600' ,fontFamily:Fonts.Poppins_Regular}}> ₹{route?.params?.data?.base_fare}</Text>
+                                        <Text style={{ color: 'gray', fontWeight: '600', width: '50%', fontFamily: Fonts.Poppins_Regular }}>Base Fare</Text>
+                                        <View style={{ flexGrow: 1, }}>
+                                            <Text style={{ color: 'gray', fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}> ₹{route?.params?.data?.base_fare}</Text>
                                         </View>
                                     </View>
                                     <View style={{ flexDirection: 'row', marginHorizontal: 25 }}>
-                                        <Text style={{ color: 'gray', fontWeight: '600' ,width:'50%',fontFamily:Fonts.Poppins_Regular}}>GST(5%)</Text>
+                                        <Text style={{ color: 'gray', fontWeight: '600', width: '50%', fontFamily: Fonts.Poppins_Regular }}>GST(5%)</Text>
                                         <View style={{ flexGrow: 1, }}>
-                                            <Text style={{ color: 'gray', fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}> ₹{route?.params?.data?.total_gst}</Text>
+                                            <Text style={{ color: 'gray', fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}> ₹{route?.params?.data?.total_gst}</Text>
                                         </View>
                                     </View>
-                                    <View style={{ borderTopWidth: 1, borderColor: 'gray', marginTop: 15,marginHorizontal:10 }}>
+                                    <View style={{ borderTopWidth: 1, borderColor: 'gray', marginTop: 15, marginHorizontal: 10 }}>
 
                                     </View>
 
                                     <View style={{ flexDirection: 'row', marginHorizontal: 25, marginTop: 15, }}>
-                                        <Text style={{ color: 'black', fontWeight: '600',width:'50%',fontFamily:Fonts.Poppins_Regular }}>Total Fare</Text>
+                                        <Text style={{ color: 'black', fontWeight: '700', width: '50%', fontFamily: Fonts.Poppins_Regular }}>Total Fare</Text>
                                         <View style={{ flexGrow: 1, }}>
-                                            <Text style={{ color: 'black', fontWeight: '600' ,fontFamily:Fonts.Poppins_Regular}}> ₹{route?.params?.data?.total_price}</Text>
+                                            <Text style={{ color: 'black', fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}> ₹{route?.params?.data?.total_price}</Text>
                                         </View>
                                     </View>
                                 </>
@@ -213,7 +245,7 @@ const CarsDetail = ({ navigation, route }) => {
                             }}
                             onPress={() => { setExcluion(!Exclusion); setExtra(false), setTextVisibility(false); setTerm(false) }}
                         >
-                            <Text style={{ color: "black", fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Exclusion</Text>
+                            <Text style={{ color: "black", fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Exclusion</Text>
                             {
                                 Exclusion === true ?
                                     <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
@@ -229,13 +261,13 @@ const CarsDetail = ({ navigation, route }) => {
                             Exclusion &&
                             <>
                                 <View style={{ flexDirection: 'row', marginHorizontal: 25, marginTop: 15 }}>
-                                    <Text style={{ color: 'gray', fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Toll Tax</Text>
+                                    <Text style={{ color: 'gray', fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Toll Tax</Text>
 
 
                                 </View>
 
                                 <View style={{ flexDirection: 'row', marginHorizontal: 25, marginTop: 15 }}>
-                                    <Text style={{ color: 'gray', fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Parking</Text>
+                                    <Text style={{ color: 'gray', fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Parking</Text>
 
                                 </View>
                             </>
@@ -249,30 +281,30 @@ const CarsDetail = ({ navigation, route }) => {
                             }}
                             onPress={() => { setExtra(!extra); setExcluion(false); setTextVisibility(false); setTerm(false) }}
                         >
-                            <Text style={{ color: "black", fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Extra charges</Text>
+                            <Text style={{ color: "black", fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Extra charges</Text>
                             {
                                 extra === true ?
                                     <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
-                                        <MaterialIcons name={'keyboard-arrow-up'} size={25}  color={'gray'}/>
+                                        <MaterialIcons name={'keyboard-arrow-up'} size={25} color={'gray'} />
                                     </View>
                                     :
                                     <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
-                                        <MaterialIcons name={'keyboard-arrow-down'} size={25} color={'gray'}/>
+                                        <MaterialIcons name={'keyboard-arrow-down'} size={25} color={'gray'} />
                                     </View>}
                         </TouchableOpacity>}
                         {
                             extra === true ?
                                 <>
                                     <View style={{ flexDirection: 'row', padding: 15, marginHorizontal: 10 }}>
-                                        <Text style={{ color: 'gray', fontWeight: '600' ,fontFamily:Fonts.Poppins_Regular}}>Extra Km</Text>
+                                        <Text style={{ color: 'gray', fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Extra Km</Text>
                                         <View style={{ flexGrow: 1, alignItems: "flex-end" }}>
-                                            <Text style={{ color: 'gray', fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Rs. {(route?.params?.data?.extra_km)}/km</Text>
+                                            <Text style={{ color: 'gray', fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Rs. {(route?.params?.data?.extra_km)}/km</Text>
                                         </View>
                                     </View>
                                     <View style={{ flexDirection: 'row', marginHorizontal: 25 }}>
-                                        <Text style={{ color: 'gray', fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Extra Hour</Text>
+                                        <Text style={{ color: 'gray', fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Extra Hour</Text>
                                         <View style={{ flexGrow: 1, alignItems: "flex-end" }}>
-                                            <Text style={{ color: 'gray', fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Rs. {route?.params?.data?.extra_hour}/hour</Text>
+                                            <Text style={{ color: 'gray', fontWeight: '600', fontFamily: Fonts.Poppins_Regular }}>Rs. {route?.params?.data?.extra_hour}/hour</Text>
                                         </View>
                                     </View>
 
@@ -293,7 +325,7 @@ const CarsDetail = ({ navigation, route }) => {
                                     setExcluion(false); setExtra(false), setItinerary(false); setInt(false)
                                 }}
                             >
-                                <Text style={{ color: "black", fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Package Summary</Text>
+                                <Text style={{ color: "black", fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Package Summary</Text>
                                 {
                                     term === true ?
                                         <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
@@ -315,7 +347,7 @@ const CarsDetail = ({ navigation, route }) => {
                                         <RenderHTML
                                             style={{}}
                                             contentWidth={30}
-                                            source={{ html: route?.params?.data?.package_summary }}
+                                            source={{ html: packsum}}
                                         />
                                     </View>
 
@@ -333,15 +365,15 @@ const CarsDetail = ({ navigation, route }) => {
                             }}
                                 onPress={() => { setTerm(!term); setTextVisibility(false); setExcluion(false); setExtra(false) }}
                             >
-                                <Text style={{ color: "black", fontWeight: '600' ,fontFamily:Fonts.Poppins_Regular}}>Terms & conditions</Text>
+                                <Text style={{ color: "black", fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Terms & conditions</Text>
                                 {
                                     term === true ?
                                         <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
-                                            <MaterialIcons name={'keyboard-arrow-up'} size={25}color={'gray'} />
+                                            <MaterialIcons name={'keyboard-arrow-up'} size={25} color={'gray'} />
                                         </View>
                                         :
                                         <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
-                                            <MaterialIcons name={'keyboard-arrow-down'} size={25} color={'gray'}/>
+                                            <MaterialIcons name={'keyboard-arrow-down'} size={25} color={'gray'} />
                                         </View>}
                             </TouchableOpacity>}
 
@@ -374,7 +406,7 @@ const CarsDetail = ({ navigation, route }) => {
                                     setExcluion(false); setExtra(false), setPackage(false); setItinerary(false)
                                 }}
                             >
-                                <Text style={{ color: "black", fontWeight: '600',fontFamily:Fonts.Poppins_Regular }}>Itineary</Text>
+                                <Text style={{ color: "black", fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>Itineary</Text>
                                 {
                                     int === true ?
                                         <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
@@ -398,7 +430,7 @@ const CarsDetail = ({ navigation, route }) => {
                                         <RenderHTML
                                             style={{}}
                                             contentWidth={30}
-                                            source={{ html: route?.params?.data?.itenary }}
+                                            source={{ html: iti }}
                                         />
                                     </View>
 
@@ -420,7 +452,7 @@ const CarsDetail = ({ navigation, route }) => {
                                     setExcluion(false); setExtra(false); setInt(false); setPackage(false)
                                 }}
                             >
-                                <Text style={{ color: "black", fontWeight: '600' ,fontFamily:Fonts.Poppins_Regular}}>T&C</Text>
+                                <Text style={{ color: "black", fontWeight: '700', fontFamily: Fonts.Poppins_Regular }}>T&C</Text>
                                 {
                                     itneray === true ?
                                         <View style={{ flexGrow: 1, alignItems: 'flex-end' }}>
@@ -438,20 +470,21 @@ const CarsDetail = ({ navigation, route }) => {
 
                                 <View style={{ marginHorizontal: 10 }}>
                                     <View>
-                                        <Text style={{ color: "black", fontSize: 16, fontWeight: '500' ,fontFamily:Fonts.Poppins_Regular}}>Inclusion</Text>
+                                        <Text style={{ color: "black", fontSize: 16, fontWeight: '500', fontFamily: Fonts.Poppins_Regular }}>Inclusion</Text>
                                         <RenderHTML
                                             style={{}}
                                             contentWidth={30}
-                                            source={{ html: route?.params?.data?.inclusion }}
+                                            source={{ html: htmlContent}}
+
                                         />
                                     </View>
 
                                     <View style={{}}>
-                                        <Text style={{ color: "black", fontSize: 16, fontWeight: '500',fontFamily:Fonts.Poppins_Regular }}>Exclusion</Text>
+                                        <Text style={{ color: "black", fontSize: 16, fontWeight: '500', fontFamily: Fonts.Poppins_Regular }}>Exclusion</Text>
                                         <RenderHTML
                                             style={{}}
                                             contentWidth={30}
-                                            source={{ html: route?.params?.data?.exclution }}
+                                            source={{ html: htmlContent1 }}
                                         />
                                     </View>
 
@@ -469,7 +502,7 @@ const CarsDetail = ({ navigation, route }) => {
                     marginBottom: 30, backgroundColor: '#007BFF', justifyContent: 'center', alignItems: 'center', marginTop: 20, height: 40,
                     marginHorizontal: 10, borderRadius: 10
                 }} onPress={() => { navigation.navigate('TripDetails', { data: route?.params?.data }) }}>
-                    <Text style={{ color: 'white',fontFamily:Fonts.Poppins_Regular }}>Confirm booking</Text>
+                    <Text style={{ color: 'white', fontFamily: Fonts.Poppins_Regular, fontSize: 18,fontWeight:'700' }}>Confirm booking</Text>
                 </TouchableOpacity>
 
             </View>
@@ -498,6 +531,6 @@ const styles = StyleSheet.create({
     text: {
         flex: 1,
         fontSize: 16,
-        color:'gray'
+        color: 'gray'
     },
 })

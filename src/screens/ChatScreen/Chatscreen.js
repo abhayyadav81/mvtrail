@@ -454,7 +454,7 @@ const Chatscreen = (props) => {
                 <View style={{ flexDirection: 'row', paddingHorizontal: 20, width: 260, justifyContent: 'space-between' }}>
                   <ItemButton
                     onPress1={() => {
-                      navigation.navigate('Ridedetail', { data: item });
+                      navigation.navigate('Ridedetails', { data: item });
                       //  setShouldshow(1)
                     }}
                     // type="outline"
@@ -669,7 +669,7 @@ const Chatscreen = (props) => {
                 <View style={{ flexDirection: 'row', paddingHorizontal: 20, width: 260, justifyContent: 'space-between' }}>
                   <ItemButton
                     onPress1={() => {
-                      navigation.navigate('Ridedetail', { data: item,cancel:1 });
+                      navigation.navigate('Ridedetails', { data: item,cancel:1 });
                       //  setShouldshow(1)
                     }}
                     // type="outline"

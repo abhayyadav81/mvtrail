@@ -24,7 +24,7 @@ function RidesView(props) {
       }}>
       <Text style={{
         fontSize: 14,
-        fontWeight: '500',
+        fontWeight: '700',
         // paddingBottom:0,
         color: '#000',
         width: 120, fontFamily: Fonts.Poppins_Regular

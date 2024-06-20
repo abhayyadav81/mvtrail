@@ -19,6 +19,8 @@ import Geocoder from 'react-native-geocoding';
 import { responsiveHeight } from 'react-native-responsive-dimensions';
 import { SafeAreaView } from 'react-native';
 import { Fonts } from '../../utils';
+import MarkIcon from '../../images/Markicon.svg'
+
 
 const BillingDetails = ({ navigation }) => {
 
@@ -271,20 +273,20 @@ const termtext5 =`You are prohibited from using the Service to:
                     <View style={{ height: '55%', paddingVertical: 10 }}>
 
                         <View style={{}}>
-                            <Text style={{ color: 'black', fontSize: 15, fontWeight: '600',fontFamily: Fonts.Poppins_Regular }}>Mobile no.</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontWeight: '700',fontFamily: Fonts.Poppins_Regular }}>Mobile no.</Text>
                             <Text style={{ color: "gray" ,fontFamily: Fonts.Poppins_Regular}}>{dataUser?.mobile}</Text>
                         </View>
 
 
 
                         <View style={{ marginTop: 20 }}>
-                            <Text style={{ color: 'black', fontSize: 15, fontWeight: '600',fontFamily: Fonts.Poppins_Regular }}>Email</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontWeight: '700',fontFamily: Fonts.Poppins_Regular }}>Email</Text>
                             <Text style={{ color: "gray" ,fontFamily: Fonts.Poppins_Regular}}>{dataUser?.email}</Text>
                         </View>
 
 
                         <View style={{ marginTop: 20 }}>
-                            <Text style={{ color: 'black', fontSize: 15, fontWeight: '600' ,fontFamily: Fonts.Poppins_Regular}}>Full name</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontWeight: '700' ,fontFamily: Fonts.Poppins_Regular}}>Full name</Text>
                             <Text style={{ color: "gray" ,fontFamily: Fonts.Poppins_Regular}}>{dataUser?.username}</Text>
                         </View>
                         {/* <View style={{ marginTop: 20 }}>
@@ -298,7 +300,7 @@ const termtext5 =`You are prohibited from using the Service to:
                         </View> */}
 
                         <View style={{ marginTop: 20 }}>
-                            <Text style={{ color: 'black', fontSize: 15, fontWeight: '600',fontFamily: Fonts.Poppins_Regular }}>Pickup location</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontWeight: '700',fontFamily: Fonts.Poppins_Regular }}>Pickup location</Text>
                             <TextInput style={{ borderWidth: 1, borderRadius: 10, height: 40, marginTop: 10, paddingHorizontal: 10 , color:'black'}}
                                 placeholder='Enter pickup location'
                                 placeholderTextColor={'#bbb'}
@@ -314,7 +316,8 @@ const termtext5 =`You are prohibited from using the Service to:
                         }}
                             onPress={() => setModalVisible(true)}
                         >
-                            <Image source={require('../../images/location.png')} />
+                            <MarkIcon/>
+
                             <Text style={{ marginLeft: 6, color: "#007BFF", fontWeight: "500",fontFamily: Fonts.Poppins_Regular }}>Mark your location</Text>
                         </TouchableOpacity>
 
@@ -334,7 +337,7 @@ const termtext5 =`You are prohibited from using the Service to:
                             value={state.toggleCheckBoxCancel_2}
                             tintColors={{ true: '#007BFF', false: "gray" }}
                             onValueChange={(text) => setState({ ...state, toggleCheckBoxCancel_2: text })} />
-                        <Text style={{ color: '#173B86' ,fontFamily: Fonts.Poppins_Regular}}>Book now pay later</Text>
+                        <Text style={{ color: '#173B86' ,fontFamily: Fonts.Poppins_Regular,fontWeight:'700'}}>Book now pay later</Text>
                     </View>
 
                     <View style={{
@@ -348,8 +351,8 @@ const termtext5 =`You are prohibited from using the Service to:
                             tintColors={{ true: '#007BFF', false: "gray" }}
                             onValueChange={(text) => setState({ ...state, toggleCheckBoxCancel_3: text })} />
                         <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => {setModalVisible1(true)}}>
-                            <Text style={{ color: '#173B86',fontFamily: Fonts.Poppins_Regular }}>I accept</Text>
-                            <Text style={{ color: '#007BFF', marginLeft: 5 ,fontFamily: Fonts.Poppins_Regular}}>term and condition</Text>
+                            <Text style={{ color: '#173B86',fontFamily: Fonts.Poppins_Regular,fontWeight:'700' }}>I accept</Text>
+                            <Text style={{ color: '#007BFF', marginLeft: 5 ,fontFamily: Fonts.Poppins_Regular,fontWeight:'700'}}>term and condition</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -517,7 +520,7 @@ const termtext5 =`You are prohibited from using the Service to:
                 // disabled={!pickuploaction}
 
                 >
-                    <Text style={{ color: 'white',fontSize:17,fontFamily: Fonts.Poppins_Regular }}>Book now</Text>
+                    <Text style={{ color: 'white',fontSize:17,fontFamily: Fonts.Poppins_Regular,fontWeight:'700' }}>Book now</Text>
                 </TouchableOpacity>
             </View>
 

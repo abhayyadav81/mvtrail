@@ -37,7 +37,8 @@ const persistConfig = {
     "carDetail",
     "dataUser",
     "bookingDetail",
-    "roadPackage"
+    "roadPackage",
+    "MPincode"
   ],
 };
 export const store = configureStore({

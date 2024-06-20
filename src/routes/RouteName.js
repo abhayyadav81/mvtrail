@@ -27,8 +27,10 @@ const RouteName = {
     PATMENT_SUCCESSFULL_SCREEN: "PaytmSuccessFully",
     CREDIT_CARD_SCREEN: "CreditCardScreen",
     CANCEL_TRIP_SCREEN: "CancelTripScreen",
-    RIDE_DETAIL:"Ridedetail",
+    // RIDE_DETAIL:"Ridedetail",
     ACCOUNT_SCREEN:'AccountScreen',
-    TERM_CONDITION:'term&condition'
+    TERM_CONDITION:'term&condition',
+    RIDE_DETAIL:'Ridedetails'
+
 }
 export default RouteName;

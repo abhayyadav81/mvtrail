@@ -22,6 +22,7 @@ import AccountTab from '../screens/Home/Tab/Account';
 import ProfilePicker from '../components/commonComponents/ProfilePicker';
 import MyridesTab from '../images/Myrides.svg';
 import MyridesTabAcc from '../images/MyrideAcctive.svg';
+import Ridedetails from '../screens/Home/Tab/Ridedetails';
 
 
 const Tab = createBottomTabNavigator();
@@ -184,6 +185,16 @@ function MessagesListTabStack({ navigation }) {
           ),
         }}
       />
+       <Stack.Screen name={'Ridedetails'} component={Ridedetails} options={{
+        headerTitle: (props) => <AppHeader {...props} headerTitle={t("My Rides")} />,
+        ...HeaderArray,
+        headerLeft: () => (
+          <HeaderLeftMenuIcon onPress={() => navigation.toggleDrawer()} />
+        ),
+        headerRight: () => (
+          <ColorPicker />
+        ),
+      }} />
     </Stack.Navigator>
   );
 }

@@ -3,6 +3,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from "react-redux";
 import { Colors } from '../utils';
+import Mpinset from '../screens/Mpin/Mpinset';
 
 
 import { RouteName, SideNavigator } from '../routes';
@@ -21,7 +22,7 @@ import Ridedetails from '../screens/Home/Tab/Ridedetails';
 import { Profile } from '../screens';
 import ProfileTab from '../screens/Home/Tab/Profile';
 import TermNcondition from '../screens/Home/TermNcondition';
-
+import CheckMPin from '../screens/Mpin/CheckMPin';
 const RootNavigator = props => {
   const { userData, userId, dataUser, carDetail, activeBookings } = useSelector(
     (state: any) => state.auth,
@@ -48,10 +49,12 @@ const RootNavigator = props => {
   return (
     <NavigationContainer theme={colorValue}>
       <Stack.Navigator screenOptions={{ headerShown: false }}
-       initialRouteName={dataUser?.access_token ?  RouteName.SIDE_NAVIGATOR :'SplashScreen'}
-      //  initialRouteName={RouteName.SIDE_NAVIGATOR}
+       initialRouteName={dataUser?.access_token ?  'CheckMPin' :'SplashScreen'}
+      //  initialRouteName={'Mpinset'}
       >
         <Stack.Screen name={'SplashScreen'} component={SplashScreen} />
+        <Stack.Screen name={'Mpinset'} component={Mpinset} />
+        <Stack.Screen name={'CheckMPin'} component={CheckMPin} />
         <Stack.Screen name={RouteName.LOGIN_SCREEN} component={LoginScreen} />
         <Stack.Screen name={RouteName.REGISTER_SCREEN} component={RegisterScreen} />
         <Stack.Screen name={'profile'} component={Profile} />

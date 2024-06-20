@@ -9,6 +9,9 @@ import RNFS from 'react-native-fs';
 import { Fonts } from '../../utils';
 
 import RNFetchBlob from 'rn-fetch-blob';
+import CircleRight from '../../images/correctcircle.svg'
+import Downloadicon from '../../images/Downloadicon.svg'
+
 
 const ConfirmBooking = () => {
     const { userData, userId, activeBookings, carDetail, bookingDetail, dataUser } = useSelector(
@@ -178,7 +181,7 @@ const ConfirmBooking = () => {
         }}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={{ borderBottomWidth: 1, borderColor: 'gray', paddingVertical: 10, flexDirection: 'row', borderColor: 'gray' }}>
-                    <Image source={require('../../images/right.png')} />
+                <CircleRight/>
                     <Text style={{
                         color: '#007BFF', fontWeight: '700',
                         fontSize: 17, marginLeft: 7,fontFamily: Fonts.Poppins_Regular
@@ -190,14 +193,14 @@ const ConfirmBooking = () => {
                         }}
                             onPress={() => _Download_list()}
                         >
-                            <Image source={require('../../images/info.png')} tintColor={'white'}/>
+                           <Downloadicon/>
                             <Text style={{ color: 'white', fontSize: 14,marginLeft:3 ,fontFamily: Fonts.Poppins_Regular}}>Download</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
 
                 <View style={{ paddingVertical: 10 }}>
-                    <Text style={{ color: 'black', fontSize: 16 ,fontFamily: Fonts.Poppins_Regular}}>Hi {dataUser?.username},</Text>
+                    <Text style={{ color: 'black', fontSize: 16 ,fontFamily: Fonts.Poppins_Regular,fontWeight:'700'}}>Hi {dataUser?.username},</Text>
                     <View style={{ marginTop: 10 }}>
                         <Text style={{ fontSize: 15, color: 'gray' ,fontFamily: Fonts.Poppins_Regular}}>Your booking is
                             created. You will soon receive a call/SMS/email from us after
@@ -206,7 +209,7 @@ const ConfirmBooking = () => {
                 </View>
                 <View style={{ marginTop: 20 }}>
                     <View style={{ borderBottomWidth: 1, borderColor: 'gray', paddingVertical: 10 }}>
-                        <Text style={{ color: 'black', fontSize: 17, fontWeight: '500',fontFamily: Fonts.Poppins_Regular }}>Booking details</Text>
+                        <Text style={{ color: 'black', fontSize: 17, fontWeight: '700',fontFamily: Fonts.Poppins_Regular }}>Booking details</Text>
                     </View>
 
 
@@ -216,7 +219,7 @@ const ConfirmBooking = () => {
                             return (
                                 <View style={{ flexDirection: 'row', paddingVertical: 10 }}>
                                     <View style={{ width: '50%' }}>
-                                        <Text style={{ color: 'black', fontSize: 15,fontFamily: Fonts.Poppins_Regular }}>{item?.name}</Text>
+                                        <Text style={{ color: 'black', fontSize: 15,fontFamily: Fonts.Poppins_Regular,fontWeight:"600" }}>{item?.name}</Text>
                                     </View>
                                     <View style={{ width: '50%' }}>
                                         <Text style={{ color: 'gray' ,fontFamily: Fonts.Poppins_Regular}}>{item?.value}</Text>
@@ -233,14 +236,14 @@ const ConfirmBooking = () => {
 
                 <View style={{ marginTop: 20 }}>
                     <View style={{ borderBottomWidth: 1, borderColor: 'gray', paddingVertical: 10 }}>
-                        <Text style={{ color: 'black', fontSize: 17, fontWeight: '500',fontFamily: Fonts.Poppins_Regular }}>Fare details</Text>
+                        <Text style={{ color: 'black', fontSize: 17, fontWeight: '700',fontFamily: Fonts.Poppins_Regular }}>Fare details</Text>
                     </View>
                     <View style={{ flexDirection: 'row', paddingVertical: 10 }}>
                         <View style={{ width: '50%' }}>
-                            <Text style={{ color: 'black', fontSize: 15 ,fontFamily: Fonts.Poppins_Regular}}>Fare</Text>
+                            <Text style={{ color: '#000000', fontSize: 15 ,fontFamily: Fonts.Poppins_Regular}}>Fare</Text>
                         </View>
                         <View style={{ width: '50%' }}>
-                            <Text style={{ color: 'gray',fontFamily: Fonts.Poppins_Regular }}>{bookingDetail?.booking_price}</Text>
+                            <Text style={{ color: '#5A5A5A',fontFamily: Fonts.Poppins_Regular }}>{bookingDetail?.booking_price}</Text>
                         </View>
                     </View>
                     <View style={{ flexDirection: 'row', paddingVertical: 10 }}>

@@ -11,6 +11,7 @@ import { BASE_URL } from '../../../utils/Api';
 import RNFetchBlob from 'rn-fetch-blob';
 import { Fonts } from '../../../utils';
 import Downloadicon from '../../../images/Downloadicon.svg'
+import CrossIcon from '../../../images/Crossicon.svg'
 
 const Ridedetails = ({ route }) => {
   const { Colors } = useTheme();
@@ -133,7 +134,7 @@ const Ridedetails = ({ route }) => {
       }
 
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
-        <Text style={{ paddingHorizontal: 25, fontSize: 20, fontWeight: '500', color: '#000',fontFamily: Fonts.Poppins_Regular }}>Ride details</Text>
+        <Text style={{ paddingHorizontal: 25, fontSize: 20, fontWeight: '700', color: '#000',fontFamily: Fonts.Poppins_Regular }}>Ride details</Text>
         <View style={{ flexDirection: 'row' }}>
           {
             route?.params?.cancel == 1 ?
@@ -150,7 +151,8 @@ const Ridedetails = ({ route }) => {
           }
 
           <TouchableOpacity onPress={() => navigation.goBack()} style={{justifyContent:"center",paddingHorizontal:15}}>
-            <Image source={require('../../../images/close.png')} />
+          <CrossIcon/>
+
             {/* <Entypo name="cross" size={40} color={'#000'} paddingHorizontal={15} /> */}
           </TouchableOpacity>
         </View>

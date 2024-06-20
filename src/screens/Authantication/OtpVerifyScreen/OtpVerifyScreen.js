@@ -30,7 +30,7 @@ const OtpScreenset = (props, { route }) => {
         navigation.dispatch(
             CommonActions.reset({
                 index: 0,
-                routes: [{ name: RouteName.SIDE_NAVIGATOR }],
+                routes: [{ name: 'Mpinset' }],
             })
         );
     };
@@ -41,7 +41,7 @@ const OtpScreenset = (props, { route }) => {
     }
     const onoknutton = () => {
         if (okbutton === false) okbutton;
-        if (okbutton === true) navigation.replace(RouteName.SIDE_NAVIGATOR)
+        if (okbutton === true) navigation.replace('Mpinset')
     }
     const [isLoading, setIsLoading] = useState(false);
 

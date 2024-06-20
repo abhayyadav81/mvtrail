@@ -1,3 +1,4 @@
+
 import { StyleSheet, Text, View, TouchableOpacity, Easing, Image, Animated, FlatList } from 'react-native'
 import React, { useState, useEffect, useRef } from 'react'
 import CarsDetail from './CarsDetail';
@@ -11,9 +12,11 @@ import { BASE_URL } from '../../utils/Api';
 import axios from 'axios';
 import Dimensions from '../../utils/Dimension';
 import {Fonts} from '../../utils';
+import { responsiveHeight } from 'react-native-responsive-dimensions';
 
 
-const CarsPriceDetail = () => {
+const CarsPriceDetail = ({route}) => {
+// console.log('routeeee-----', route.params.booking);
     const { userData, activeBookings } = useSelector(
         (state: any) => state.auth,
     );
@@ -110,7 +113,7 @@ const CarsPriceDetail = () => {
     };
     // console.log('setSelectedSubCar', selectedSubCar)
     const selectedCar = selectedSubCar[selectedCarId];
-    // console.log('selectedCar', selectedCar)
+    console.log('userDatauserDatauserData------>>>>>>', userData)
     return (
         <>
 
@@ -118,7 +121,8 @@ const CarsPriceDetail = () => {
                 userData ? (
                     <View style={{
                         flex: 1,
-                        padding: 15,
+                        padding: 8,
+                        paddingHorizontal:12,
                         backgroundColor: 'white',
                         borderTopWidth: 1,
                         shadowColor: 'black',
@@ -134,8 +138,8 @@ const CarsPriceDetail = () => {
                             renderItem={({ item }) => {
                                 const mainCarData = selectedSubCar[item.id] || item;
                                 return (
-                                    <View style={{ borderWidth: 1, borderRadius: 10, borderColor: 'gray', marginTop: 10 }}>
-                                        <View style={{ flexDirection: 'row', padding: 10 }}>
+                                    <View style={{ borderWidth: 1, borderRadius: 10, borderColor: 'gray', marginTop: 10, padding: 12 }}>
+                                        <View style={{ flexDirection: 'row',  }}>
                                             <View style={{ justifyContent: 'center' }}>
                                                 <Image
                                                     source={{ uri: `https://www.bharattaxi.com/images/car_image/${mainCarData.car_image}` }}
@@ -153,10 +157,7 @@ const CarsPriceDetail = () => {
                                                 }}>
                                                     <Text style={{ color: 'gray',fontFamily:Fonts.Poppins_Regular }}>{mainCarData.class_name}</Text>
                                                 </View>
-                                                <View style={{ borderRadius: 5, marginTop: 5, flexDirection: 'row', width: '75%' }}>
-                                                    <Text style={{ color: 'black', fontSize: 12 }}>Package</Text>
-                                                    <Text style={{ marginLeft: 10, color: 'gray', fontSize: 12 ,fontFamily:Fonts.Poppins_Regular}}>{mainCarData.package_name}</Text>
-                                                </View>
+                                               
                                             </View>
                                             <View style={{ justifyContent: "center" }}>
                                                 <View style={{ flexDirection: 'row' }}>
@@ -187,10 +188,20 @@ const CarsPriceDetail = () => {
                                                 </TouchableOpacity>
                                             </View>
                                         </View>
-
+                                        <View style={{ borderRadius: 5,  flexDirection: 'row', paddingHorizontal: 4, bottom:responsiveHeight(1.1) }}>
+                                                    <Text style={{ color: 'black', fontSize: 14, fontFamily:Fonts.Poppins_Regular, fontWeight:'500' }}>Package</Text>
+                                                    <Text style={{ marginLeft: 10, color: 'gray', fontSize: 12 ,fontFamily:Fonts.Poppins_Regular, fontWeight:'400'}}>{mainCarData.package_name}</Text>
+                                                </View>
+                                                {route.params.booking === 'oneway' &&
+                                                <View style={{ borderRadius: 5,  flexDirection: 'row', paddingHorizontal: 4, bottom:responsiveHeight(1) }}>
+                                                    <Text style={{ color: 'black', fontSize: 14, fontFamily:Fonts.Poppins_Regular, fontWeight:'500' }}>Charged distance</Text>
+                                                    <Text style={{ marginLeft: 10, color: 'gray', fontSize: 12 ,fontFamily:Fonts.Poppins_Regular}}>{mainCarData.minimum_km}{' '}km</Text>
+                                                </View>
+                            }
+                            
                                         {item.select &&
-                                            <View style={{ marginHorizontal: 10, borderTopWidth: 1, borderColor: "gray" }}>
-                                                <View style={{ flexDirection: 'row' }}>
+                                            <View style={{ marginHorizontal: 10, borderTopWidth: 1, borderColor: "gray", }}>
+                                                <View style={{ flexDirection: 'row', marginTop: 10 }}>
                                                     <View style={{ width: '40%' }}>
                                                         <Text style={{ fontSize: 15, fontWeight: "500", color: "black",fontFamily:Fonts.Poppins_Regular }}>Duration</Text>
                                                     </View>
