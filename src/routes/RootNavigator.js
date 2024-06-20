@@ -49,8 +49,8 @@ const RootNavigator = props => {
   return (
     <NavigationContainer theme={colorValue}>
       <Stack.Navigator screenOptions={{ headerShown: false }}
-       initialRouteName={dataUser?.access_token ?  'CheckMPin' :'SplashScreen'}
-      //  initialRouteName={'Mpinset'}
+      //  initialRouteName={dataUser?.access_token ?  'CheckMPin' :'SplashScreen'}
+       initialRouteName={RouteName.SIDE_NAVIGATOR}
       >
         <Stack.Screen name={'SplashScreen'} component={SplashScreen} />
         <Stack.Screen name={'Mpinset'} component={Mpinset} />

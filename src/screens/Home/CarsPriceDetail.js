@@ -167,14 +167,14 @@ const CarsPriceDetail = ({route}) => {
                                                             justifyContent: "center", alignItems: 'center', borderColor: '#FFA807',
                                                             top: Dimensions.hp(0.3)
                                                         }}
-                                                        onPress={() => { navigation.navigate('CarsDetail', { data: mainCarData }) }}>
+                                                        onPress={() => { navigation.navigate('CarsDetail', { data: mainCarData, Idetails: route.params.booking === 'oneway' ? route.params.booking : null }) }}>
                                                         <Text style={{ color: '#FFA807',fontFamily:Fonts.Poppins_Regular, bottom: Dimensions.hp(0.3) }}>i</Text>
                                                     </TouchableOpacity>
                                                     <Text style={{ color: 'black', fontWeight: '700', paddingLeft:Dimensions.wp(1.5) ,fontFamily:Fonts.Poppins_Regular}}>
                                                         ₹ {mainCarData.total_price || mainCarData.car_price}
                                                     </Text>
                                                 </View>
-                                                <View style={{ marginTop: 6 }}>
+                                                <View style={{ paddingTop: 5, }}>
                                                     <Text style={{ fontSize: 12, color: 'gray',fontFamily:Fonts.Poppins_Regular }}>Inc. GST &DA</Text>
                                                 </View>
                                                 <TouchableOpacity
@@ -188,12 +188,12 @@ const CarsPriceDetail = ({route}) => {
                                                 </TouchableOpacity>
                                             </View>
                                         </View>
-                                        <View style={{ borderRadius: 5,  flexDirection: 'row', paddingHorizontal: 4, bottom:responsiveHeight(1.1) }}>
+                                        <View style={{ borderRadius: 5,  flexDirection: 'row', paddingHorizontal: 3 }}>
                                                     <Text style={{ color: 'black', fontSize: 14, fontFamily:Fonts.Poppins_Regular, fontWeight:'500' }}>Package</Text>
                                                     <Text style={{ marginLeft: 10, color: 'gray', fontSize: 12 ,fontFamily:Fonts.Poppins_Regular, fontWeight:'400'}}>{mainCarData.package_name}</Text>
                                                 </View>
                                                 {route.params.booking === 'oneway' &&
-                                                <View style={{ borderRadius: 5,  flexDirection: 'row', paddingHorizontal: 4, bottom:responsiveHeight(1) }}>
+                                                <View style={{ borderRadius: 5,  flexDirection: 'row', paddingHorizontal: 3,  }}>
                                                     <Text style={{ color: 'black', fontSize: 14, fontFamily:Fonts.Poppins_Regular, fontWeight:'500' }}>Charged distance</Text>
                                                     <Text style={{ marginLeft: 10, color: 'gray', fontSize: 12 ,fontFamily:Fonts.Poppins_Regular}}>{mainCarData.minimum_km}{' '}km</Text>
                                                 </View>

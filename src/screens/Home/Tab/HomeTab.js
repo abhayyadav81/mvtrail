@@ -19,7 +19,7 @@ import Geolocation from '@react-native-community/geolocation';
 import { border } from 'native-base/lib/typescript/theme/styled-system';
 import { color } from 'react-native-elements/dist/helpers';
 import { Spacing, VectorIcon, BottomSheet } from '../../../components';
-import { SH, SF } from '../../../utils';
+import { SH, SF, heightPercent } from '../../../utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Fonts } from '../../../utils';
 import CarsDetail from '../CarsDetail';
@@ -1312,7 +1312,7 @@ const HomeTab = (props) => {
 
 
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>{t("Where_Are_You_Place")}</Text>
 
                     <AutocompleteDropdown
@@ -1337,6 +1337,7 @@ const HomeTab = (props) => {
                         textInputProps={{
                             placeholder: 'Source city name ..',
                             placeholderTextColor: '#000',
+                            placeholderStyle:{alignSelf:'center', textAlign:'center', fontSize:12},
                             autoCorrect: false,
                             autoCapitalize: 'none',
                             style: {
@@ -1391,7 +1392,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Package type</Text>
                     {/* <View style={[{ borderColor: error === true ? 'red' : 'black' }, HomeTabStyless.SearchPlaceStyle1]}>
 
@@ -1466,7 +1467,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Pickup date</Text>
 
                     {
@@ -1517,7 +1518,7 @@ const HomeTab = (props) => {
     const Oneway = [
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>{t("Where_Are_You_Place")}</Text>
 
 
@@ -1581,7 +1582,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Destination city</Text>
 
                     <AutocompleteDropdown
@@ -1647,7 +1648,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Pickup date</Text>
                     {
                         dateTime ?
@@ -1695,7 +1696,7 @@ const HomeTab = (props) => {
     const Roundtrip = [
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>{t("Where_Are_You_Place")}</Text>
 
                     <AutocompleteDropdown
@@ -1760,7 +1761,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={HomeTabStyless.WhereAreYouTitle}>Destination city</Text>
                         <View style={{ flexGrow: 1, alignItems: 'flex-end', marginHorizontal: 10 }}>
@@ -1774,7 +1775,7 @@ const HomeTab = (props) => {
                         <View key={index}>
                             <View style={{
                                 flexDirection: 'row',
-                                borderWidth: 1, alignItems: "center", paddingHorizontal: 5, paddingVertical: 5, borderRadius: 10, height: 42, marginVertical: 5, borderColor: error === true ? 'red' : '#bbb'
+                                borderWidth: 1, alignItems: "center", paddingHorizontal: 5, paddingVertical: 5, borderRadius: 10, height: 40, marginVertical: 5, borderColor: error === true ? 'red' : '#bbb'
                             }}>
 
                                 {/* <TextInput
@@ -1849,7 +1850,7 @@ const HomeTab = (props) => {
                                     renderItem={(item, text) => <Text style={{ color: '#000', padding: 15 }}>{item}</Text>}
                                     //   ChevronIconComponent={<Feather name="chevron-down" size={20} color="#fff" />}
                                     //   ClearIconComponent={<Feather name="x-circle" size={18} color="#fff" />}
-                                    inputHeight={35}
+                                    inputHeight={38}
                                     inputWidth={225}
 
                                     showChevron={false}
@@ -1900,7 +1901,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Pickup date</Text>
 
                     {
@@ -1942,7 +1943,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Drop date</Text>
 
                     {
@@ -1991,7 +1992,7 @@ const HomeTab = (props) => {
     const Roadtrip = [
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>{t("Where_Are_You_Place")}</Text>
                     <AutocompleteDropdown
                         ref={searchRef4}
@@ -2116,7 +2117,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Number of days</Text>
 
                     <TextInput
@@ -2139,7 +2140,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Pickup date</Text>
 
                     {
@@ -2191,7 +2192,7 @@ const HomeTab = (props) => {
     const Localtrip = [
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>{t("Where_Are_You_Place")}</Text>
 
 
@@ -2256,7 +2257,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Trip type</Text>
 
                     <View style={HomeTabStyless.SearchPlaceStyle1}>
@@ -2277,7 +2278,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Drop location</Text>
 
 
@@ -2342,7 +2343,7 @@ const HomeTab = (props) => {
         },
         {
             title: (
-                <View>
+                <View style={{height:responsiveScreenHeight(12)}}>
                     <Text style={HomeTabStyless.WhereAreYouTitle}>Date & Time</Text>
                     {
                         dateTime ?
@@ -2568,7 +2569,7 @@ const HomeTab = (props) => {
                         </View>
                         <View style={HomeTabStyless.WhereAreYouBox}>
                             <ScrollView>
-                                <View>
+                                <View >
                                     {
                                         selectedButton === 'Rentals' &&
                                         <Timeline
@@ -2584,6 +2585,8 @@ const HomeTab = (props) => {
                                             showTime={false}
                                             titleStyle={HomeTabStyless.Title}
                                             descriptionStyle={HomeTabStyless.DescriptionStyle}
+                                            // lineStyle={{height:300}}
+                                            // style={{marginTop:20}}
                                         />
                                     }
                                 </View>
@@ -2690,7 +2693,7 @@ const HomeTab = (props) => {
                             }
 
                             <View style={{
-                                marginTop: 15, width: responsiveScreenWidth(66), alignSelf: 'center', right: responsiveScreenWidth(0.5)
+                                marginTop: 10, width: responsiveScreenWidth(66), alignSelf: 'center', right: responsiveScreenWidth(0.5)
                             }}>
                                 {error === true && <Text style={{ textAlign: 'center', fontWeight: 700, color: 'red' }}>Please fill empty fields</Text>}
                                 {

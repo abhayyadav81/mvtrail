@@ -1,3 +1,4 @@
+
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { Colors, SH, SW, SF, Fonts, widthPercent, heightPercent } from '../../utils';
 let screenWidth = Dimensions.get('window').width;
@@ -149,7 +150,7 @@ export default HomeTabStyles = (Colors) => StyleSheet.create({
     shadowRadius: Platform.OS === 'ios' ? 2 : 50,
     elevation: Platform.OS === 'ios' ? 1 : 6,
     paddingHorizontal: SH(10),
-    paddingVertical: SH(10)
+    paddingVertical: SH(20),
   },
   Title: {
     fontFamily: Fonts.Poppins_Regular,
@@ -202,7 +203,7 @@ export default HomeTabStyles = (Colors) => StyleSheet.create({
     right:SH(15),
     borderWidth:1,
     borderColor:'#B6B6B6',
-    height:40,marginLeft:10,borderRadius:15,justifyContent:"center",
+    height:40,marginLeft:10,borderRadius:10,justifyContent:"center",
     paddingHorizontal:15
   },
   SearchPlaceStyle1: {
@@ -222,7 +223,7 @@ export default HomeTabStyles = (Colors) => StyleSheet.create({
     borderColor:'#B6B6B6',
     height: 40,
     marginLeft: 10,
-    borderRadius: 15,
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',// Align items in center vertically
   },

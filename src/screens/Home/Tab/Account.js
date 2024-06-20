@@ -142,7 +142,7 @@ const AccountTab = () => {
       </CardLayout>
       <View
         style={style.TransactionView}>
-        <Text style={{fontsize:17,color:'black',fontweight:"700"}}>Transaction</Text>
+        <Text style={style.subTitle}>Transaction</Text>
         <View style={style.horizontalLine}
         />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: Dimensions.wp(4) }}>
@@ -156,15 +156,53 @@ const AccountTab = () => {
             <Text style={[style.TabTxt, { color: tabindex === 2 ? 'white' : "#2970B1" }]}>Debit</Text>
           </TouchableOpacity>
         </View>
-        <View style={{  paddingTop: Dimensions.hp(2) }}>
+        <View style={{  paddingTop: Dimensions.hp(1) }}>
           {tabindex === 0 &&
           <View>
+            {Transactiondata ? 
             <FlatList
               data={data}
               renderItem={renderItem}
               keyExtractor={item => item.key}
               showsVerticalScrollIndicator={false}
             />
+            :
+            <View style={{justifyContent:'center', alignItems:'center', paddingTop:40 }}>
+            <Text style={{color:'#000',fontSize:24}}>No Transactions</Text>
+            </View>
+}
+            </View>
+          }
+           {tabindex === 1 &&
+          <View>
+            {Transactiondata ? 
+            <FlatList
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={item => item.key}
+              showsVerticalScrollIndicator={false}
+            />
+            :
+            <View style={{justifyContent:'center', alignItems:'center', paddingTop:40 }}>
+            <Text style={{color:'#000',fontSize:24}}>No Transactions</Text>
+            </View>
+}
+            </View>
+          }
+            {tabindex === 2 &&
+          <View>
+            {Transactiondata ? 
+            <FlatList
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={item => item.key}
+              showsVerticalScrollIndicator={false}
+            />
+            :
+            <View style={{justifyContent:'center', alignItems:'center', paddingTop:40 }}>
+            <Text style={{color:'#000',fontSize:24}}>No Transactions</Text>
+            </View>
+}
             </View>
           }
         </View>
@@ -206,7 +244,7 @@ const style = StyleSheet.create({
   TransactionView: {
     justifyContent: 'center',
     paddingHorizontal: Dimensions.wp(4),
-    paddingTop: Dimensions.hp(10),
+    paddingTop: Dimensions.hp(4),
   },
   horizontalLine: {
     borderBottomColor: 'grey',
